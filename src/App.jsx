@@ -3,6 +3,7 @@ import './App.css'
 import WeatherCard from './coomponents/WeatherCard'
 import { fetchWheaterByCoords } from './api/weather'
 import { fetchCoordinates } from './api/geo'
+import { getColorByWeatherId } from './api/bgColor'
 
 function App() {
   const [city, setCity] = useState('seoul')
@@ -10,6 +11,9 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [err, setErr] = useState('')
   const inputRef = useRef(null)
+  const bg = weather?.weather?.[0]?.id
+    ? getColorByWeatherId(weather.weather[0].id)
+    : 'linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%)';
 
   useEffect(() => {
     inputRef.current.focus()
@@ -42,25 +46,28 @@ function App() {
 
 
   return (
-    <div className='app'>
-      <h1>김선민 날씨 앱</h1>
-      <div className="input-wrap">
-        <input
-          ref={inputRef}
-          value={city}
-          onChange={onChangeInput}
-          onKeyUp={onKeyup}
-          type="text" placeholder='도시 이름을 입력하세요' />
-        <button
-          onClick={handelSearch}
-          disabled={loading}>
-          {loading ? "검색중..." : "검색"}
-        </button>
+    <section style={{ background: bg, minHeight: '100vh', transition: 'background .3s ease' }}>
+
+      <div className='app'>
+        <h1>김선민 날씨 앱</h1>
+        <div className="input-wrap">
+          <input
+            ref={inputRef}
+            value={city}
+            onChange={onChangeInput}
+            onKeyUp={onKeyup}
+            type="text" placeholder='도시 이름을 입력하세요' />
+          <button
+            onClick={handelSearch}
+            disabled={loading}>
+            {loading ? "검색중..." : "검색"}
+          </button>
+        </div>
+        {err && <p className='error'>{err}</p>}
+        {loading && <p className='info'>불러오는 중...</p>}
+        <WeatherCard weather={weather} />
       </div>
-      {err && <p className='error'>{err}</p>}
-      {loading && <p className='info'>불러오는 중...</p>}
-      <WeatherCard weather={weather} />
-    </div>
+    </section>
   )
 }
 

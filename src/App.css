@@ -9,14 +9,18 @@
 
 body {
   background-color: skyblue;
-  padding: 0 20px;
+  /* padding: 0 20px; */
+}
+
+section {
+  padding-top: 40px;
 }
 
 .app {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 0 auto;
   background-color: whitesmoke;
-  padding: 20px;
+  padding: 12px 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.128);
   border-radius: 20px;
 }
