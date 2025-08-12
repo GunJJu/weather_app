@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Pen+Script&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nanum Pen Script", cursive;
+}
+
+body {
+  background-color: skyblue;
+  padding: 0 20px;
+}
+
+.app {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: whitesmoke;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.128);
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.input-wrap {
+  display: flex;
+}
+
+.input-wrap input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.input-wrap button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 14px;
+  background-color: #111;
+  color: whitesmoke;
+  font-size: 16px;
+}
+
+.input-wrap button[disabled] {
+  opacity: .6;
+  cursor: not-allowed;
+}
